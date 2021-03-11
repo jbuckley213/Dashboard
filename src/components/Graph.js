@@ -1,14 +1,31 @@
 import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
-import { GraphContainer } from "./../styles/graph";
+import { GraphContainer, TitleContainer } from "./../styles/graph";
 
 function Graph() {
   const [data, setGraph] = useState({
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    // labels: ["2016-12-25", "2017-1-25", "2017-1-29", "2017-2-25"],
+    labels: ["2017-1-1", "2017-2-1", "2017-3-1"],
     datasets: [
       {
         backgroundColor: "rgba(30, 130, 76, 1)",
-        data: [1500, 1250, 2100, 1500, 1000, 1100],
+        // data: [
+        //   { x: "2016-12-25", y: 1500 },
+        //   { x: "2016-12-10", y: 1250 },
+        //   { x: 9, y: 2100 },
+        //   { x: 3, y: 1500 },
+        //   { x: 1, y: 1000 },
+        //   { x: 11, y: 1100 },
+        //   { x: 11, y: 2100 },
+        // ],
+        data: [
+          { x: "2017-1-1", y: 1500 },
+          { x: "2017-2-5", y: 1250 },
+          //   { x: "2017-2-24", y: 1250 },
+
+          { x: "2017-3-1", y: 1250 },
+        ],
+        // data: [10, 20, 30, 40],
       },
     ],
   });
@@ -18,6 +35,10 @@ function Graph() {
       display: false,
     },
 
+    // parsing: {
+    //     xAxisKey: 'id',
+    //     yAxisKey: 'nested.value'
+    // },
     plugins: [
       {
         /* Adjust axis labelling font size according to chart size */
@@ -37,12 +58,31 @@ function Graph() {
           ticks: {
             beginAtZero: true,
             min: 0,
-            // fontSize: 8,
+            fontSize: 8,
             stepSize: 500,
-            suggestedMax: 2000,
+            // suggestedMax: 2000,
             callback: function (value, index, values) {
               return value + "kg.";
             },
+          },
+        },
+      ],
+      xAxes: [
+        {
+          distribution: "series",
+
+          ticks: {
+            source: "labels",
+            maxTicksLimit: 2,
+            callback: function (value, index, values) {
+              return value.split(" ")[0];
+            },
+          },
+          stepSize: "month",
+          type: "time",
+          min: "Dec 2015",
+          time: {
+            unit: "month",
           },
         },
       ],
@@ -54,7 +94,9 @@ function Graph() {
 
   const setGradientColor = (canvas, color) => {
     const ctx = canvas.getContext("2d");
-    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    const gradient = ctx.createLinearGradient(0, 0, 0, 100);
+
+    ctx.canvas.height = "100";
     gradient.addColorStop(0, color);
     gradient.addColorStop(0.95, "rgba(255, 255, 255, 0.2)");
     return gradient;
@@ -76,11 +118,16 @@ function Graph() {
 
   return (
     <GraphContainer>
+      <TitleContainer>
+        <img src="/images/recycling.png" />
+        <h4>Recovered</h4>
+      </TitleContainer>
       <div style={{ position: "relative", width: "100%" }}>
-        <h1>Hello world</h1>
         <Line
+          type="line"
           options={{
-            responsive: true,
+            responsive: false,
+            aspectRatio: 3,
             maintainAspectRatio: true,
           }}
           data={getChartData}
