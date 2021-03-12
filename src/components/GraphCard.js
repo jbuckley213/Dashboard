@@ -45,7 +45,7 @@ function GraphCard() {
   return (
     <GraphContainer>
       <TitleContainer>
-        <img src="/images/recycling.png" />
+        <img src="/images/recycling.png" alt="recycling" />
         <h5>Recovered</h5>
       </TitleContainer>
       <div style={{ position: "relative", width: "100%" }}>
