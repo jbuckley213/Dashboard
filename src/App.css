@@ -1,7 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+
 .App {
   text-align: center;
+  color: rgb(66, 67, 91);
+  font-family: "Open Sans", sans-serif;
 }
-
+h4,
+h5 {
+  font-weight: 600;
+  color: rgb(104, 104, 123);
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

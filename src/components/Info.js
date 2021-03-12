@@ -4,6 +4,7 @@ import {
   TileContainer,
   TileHeader,
   DateContainer,
+  RecoveredTitle,
 } from "./../styles/info";
 
 function Info() {
@@ -11,7 +12,9 @@ function Info() {
     <InfoContainer>
       <DateContainer>
         <img src="/images/calendar.png" />
-        <h4>Tuesday 27, March, 2021</h4>
+        <h4>
+          <span>Tuesday 27,</span> March, 2021
+        </h4>
       </DateContainer>
       <TileContainer>
         <TileHeader>
@@ -26,9 +29,9 @@ function Info() {
           <img src="/images/recycling.png" />
           <h5>Recovered</h5>
         </TileHeader>
-        <h3>
+        <RecoveredTitle>
           375 <span>Kg.</span>
-        </h3>
+        </RecoveredTitle>
       </TileContainer>
     </InfoContainer>
   );

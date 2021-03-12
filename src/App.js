@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import Graph from "./components/Graph";
+import GraphCard from "./components/GraphCard";
 import Info from "./components/Info";
 import Header from "./components/Header";
 
@@ -9,7 +10,7 @@ function App() {
     <div className="App">
       <Header />
       <Info />
-      <Graph />
+      <GraphCard />
     </div>
   );
 }

@@ -5,7 +5,7 @@ function Header() {
   return (
     <HeaderContainer>
       <img src="/images/nozama_logo.png" />
-      <h1>Challenge</h1>
+      <h1>CHALLENGE</h1>
     </HeaderContainer>
   );
 }
